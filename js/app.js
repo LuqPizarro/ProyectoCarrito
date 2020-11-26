@@ -22,6 +22,11 @@ function cargarEventListener () {
         limpiarHTML()
     })
 
+    document.addEventListener('DOMContentLoaded', () => {
+        articulosCarrito = JSON.parse (localStorage.getItem('articulos carrito')) || []
+        console.log(articulosCarrito);
+        carritoHTML();
+    })
 };
 
 // Funciones
@@ -109,6 +114,12 @@ function carritoHTML () {
 
         contenedorCarrito.appendChild(row)
     })  
+
+    agregarLocalStorage();
+}
+
+function agregarLocalStorage() {
+    localStorage.setItem('articulos carrito', JSON.stringify(articulosCarrito))
 }
 
 // Elimina los cursos del Tbody
